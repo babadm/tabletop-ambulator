@@ -8,6 +8,7 @@ const DelayedResponse = require('http-delayed-response');
 const app = express();
 const webSocketServer = require('websocket').server;
 const imageProcessor = require('./image-processor');
+const config = require(__dirname + '/../config/config.json');
 let webSocketsServerPort = process.env.PORT;
 if (webSocketsServerPort == null || webSocketsServerPort == "") {
   webSocketsServerPort = 8000;
@@ -229,7 +230,7 @@ app.get('/ambulator', async (req, res) => {
         res.sendStatus(500);
         return;
       }
-      const prefix = req.headers.host.startsWith('localhost') ? 'http' : 'https';
+      const prefix = req.headers.host.startsWith('localhost') || !config.USE_HTTPS ? 'http' : 'https';
       json.LuaScript = contents.replace('$HOSTNAME', `${prefix}://${req.headers.host}`);
       res.json(json);
     });

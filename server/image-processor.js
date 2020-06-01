@@ -1,10 +1,12 @@
 const request = require('request');
 const cachedRequest = require('cached-request')(request);
 const sharp = require('sharp');
+const config = require(__dirname + '/../config/config.json');
+
 
 cachedRequest.setCacheDirectory('/tmp/cache');
 
-const IMAGE_MAX_MB = 5;
+const IMAGE_MAX_MB = config.IMAGE_MAX_SIZE;
 
 const imageProcessor = (req, res) => {
   const { url: imageUrl, offset, width: sheetWidth, height: sheetHeight, thumb } = req.query;

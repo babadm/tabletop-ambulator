@@ -18,5 +18,7 @@
         "rejectUnauthorized": false
       }
     }
-  }
+  },
+  "USE_HTTPS": false,
+  "IMAGE_MAX_SIZE":50
 }
