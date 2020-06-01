@@ -1,6 +1,10 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL"
+    "username": "root",
+    "password": "admin",
+    "database": "tabletop",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "test": {
     "use_env_variable": "DATABASE_URL"
